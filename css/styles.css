@@ -185,3 +185,14 @@ hr {
     background-color: transparent;
     cursor: default;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background: rgb(23, 23, 23);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--principal);
+}

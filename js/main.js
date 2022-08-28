@@ -6,3 +6,13 @@ window.onload = function() {
         nav2.classList.toggle("is-active");
     });
 }
+function toggle_attrs_info (div_name) {
+    console.log("Hola");
+    let div =  document.getElementsByClassName(div_name)[0];
+    if (div.style.display === 'none') {
+        div.style.display = 'grid';
+    }
+    else {
+        div.style.display = 'none';
+    }
+}

@@ -28,7 +28,7 @@ function generate_terms() {
     if ($result_rows > 0) {
         echo "<div class='terms'>";
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<p>" . $row['termino'] . "</p><hr>";
+            echo "<p><strong>Término:</strong> " . $row['termino'] . "</p><hr>";
         }
         echo "</div>";
     }
@@ -43,7 +43,7 @@ function generate_attributes() {
     if ($result_terms_rows > 0) {
         echo "<div class='terms'>";
         while ($term = mysqli_fetch_assoc($result_terms)) {
-            echo "<p><strong>Termino:</strong> " . $term['termino'] . "</p>";
+            echo "<p><strong>Término:</strong> " . $term['termino'] . "</p>";
             $id_term = $term['id_termino'];
 
             $query_attrs = "SELECT * FROM atributos WHERE id_termino=$id_term;";
@@ -52,7 +52,40 @@ function generate_attributes() {
             if ($result_attrs_rows > 0) {
                 echo "<div class='attrs'>";
                 while ($attr = mysqli_fetch_assoc($result_attrs)) {
-                    echo "<p><strong>Atríbuto:</strong> " . $attr['atributo'] . "</p>";
+                    $id_attr = $attr['id_atributo'];
+                    $div_name = "attrs-ext " . $id_attr;
+                    echo "<p onclick='toggle_attrs_info(\"$div_name\")'><strong>Atríbuto:</strong> " . $attr['atributo'] . "</p>";
+
+                    echo "<div class='$div_name' style='display: none;'>";
+                    echo    "<p style='font-size:25px;font-weight:bold;'>" . $attr['atributo'] . "</p>";
+                    echo    "<div class='close-btn'><button onclick='toggle_attrs_info(\"$div_name\")'>X</button></div>";
+                    echo    "<p><strong>Descripción:</strong></p><p>" . $attr['descripcion'] . "</p>";
+                    echo    "<p><strong>Abreviaturas:</strong></p><p> " . $attr['abreviaturas'] . "</p>";
+                    echo    "<p><strong>Referencias:</strong></p><p> " . $attr['referencias'] . "</p>";
+                    echo    "<p><strong>Términos o Datos relacionados:</strong></p><p> " . $attr['terminos_datos_relac'] . "</p>";
+                    echo    "<p><strong>Política de calidad requerida:</strong></p><p> " . $attr['politica_calidad'] . "</p>";
+                    $data_decay = 'NO';
+                    if ($attr['data_decay'] == 1) {
+                        $data_decay = 'SI';
+                    }
+                    echo    "<p><strong>¿Es degradable con el tiempo?:</strong></p><p> " . $data_decay . "</p>";
+                    echo    "<p><strong>Indicadores de calidad:</strong></p><p> " . $attr['indicadores_calidad'] . "</p>";
+                    echo    "<p><strong>Códigos de fichas con indicadores de calidad:</strong></p><p> " . $attr['fichas_calidad'] . "</p>";
+                    echo    "<p><strong>Propietario:</strong></p><p> " . $attr['propietario'] . "</p>";
+                    echo    "<p><strong>Personal que captura el dato:</strong></p><p> " . $attr['personal_captura'] . "</p>";
+                    echo    "<p><strong>Personal que se encarga de actualizar el dato:</strong></p><p> " . $attr['personal_actualizacion'] . "</p>";
+                    echo    "<p><strong>Formato o Máscara:</strong></p><p> " . $attr['formato'] . "</p>";
+                    $es_calculado = 'NO';
+                    if ($attr['es_campo_calculado'] == 1) {
+                        $es_calculado = 'SI';
+                    }
+                    echo    "<p><strong>¿El dato es un campo calculado?:</strong></p><p> " . $es_calculado . "</p>";
+                    echo    "<p><strong>Formula si es un campo calculado:</strong></p><p> " . $attr['formula_campo_calculado'] . "</p>";
+                    echo    "<p><strong>Códigos de los reportes que usan el dato:</strong></p><p> " . $attr['reportes'] . "</p>";
+                    echo    "<p><strong>Códigos de los dashboards que usan el dato:</strong></p><p> " . $attr['dashboards'] . "</p>";
+                    echo    "<p><strong>Comentarios, observaciones o justificaciones:</strong></p><p> " . $attr['comentarios'] . "</p>";
+                    echo    "<p><strong>Personas o áreas que aprueban:</strong></p><p> " . $attr['aprueban'] . "</p>";
+                    echo "</div>";
                 }
                 echo "</div><hr>";
             }

@@ -141,3 +141,43 @@ hr {
     background-color: var(--principal);
     cursor: pointer;
 }
+.attrs-ext {
+    background-color:rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    text-align: left;
+    overflow-y: scroll;
+    grid-template-columns: 50% 50%;
+}
+.attrs-ext button {
+    align-self: right;
+    padding: 5px 13px;
+    margin: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    color: white;
+    font-size: large;
+    background-color: transparent;
+    border: 3px solid var(--principal);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.attrs-ext button:hover {
+    background-color: var(--principal);
+}
+.close-btn {
+    text-align: end;
+}
+.attrs-ext p {
+    background-color: transparent;
+    font-size: 15px;
+}
+.attrs-ext p:hover {
+    background-color: transparent;
+    cursor: default;
+}

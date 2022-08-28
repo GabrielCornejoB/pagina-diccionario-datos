@@ -6,7 +6,7 @@ function generate_nav($page_name) {
             "<h1 class='header-title'>" . strtoupper($page_name) . "</h2>" .
             "<button class='hamburger-menu'>" .
             "<div class='bar'></div>" .
-            "</button>";
+            "</button>" .
         "</header>";
     echo "<nav class='navbar-2'>" .
             "<a href='index.php'>Inicio</a>" .
@@ -17,4 +17,19 @@ function generate_nav($page_name) {
             "<a href='#'>Procesos</a>" .
             "<a href='#'>Riesgos</a>" .
         "</nav>";
+}
+
+function generate_terms() {
+    require "php/connection.php";
+    $query = "SELECT * FROM terminos;";
+    $result = mysqli_query($conn, $query);
+    $result_rows = mysqli_num_rows($result);
+
+    if ($result_rows > 0) {
+        echo "<div class='terms'>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<p>" . $row['termino'] . "</p><hr>";
+        }
+        echo "</div>";
+    }
 }

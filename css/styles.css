@@ -98,7 +98,7 @@ li, a, textarea {
     text-align: center;
     width: 100%;
     max-width: 300px;
-    margin: 20px auto 16px;
+    margin: 0 auto 12px;
     padding: 12px 16px;
     background-color: var(--background);
     transition: 0.5s;   

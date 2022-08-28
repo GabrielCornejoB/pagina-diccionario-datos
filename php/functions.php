@@ -12,7 +12,7 @@ function generate_nav($page_name) {
             "<a href='index.php'>Inicio</a>" .
             "<a href='terminos.php'>Términos de negocio</a>" .
             "<a href='atributos.php'>Atríbutos / Datos</a>" . 
-            "<a href='#'>Fuentes de Datos</a>" .
+            "<a href='fuentes.php'>Fuentes de Datos</a>" .
             "<a href='#'>Objetivos</a>" .
             "<a href='#'>Procesos</a>" .
             "<a href='#'>Riesgos</a>" .

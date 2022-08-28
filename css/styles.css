@@ -136,6 +136,7 @@ hr {
     background-color: var(--header);
     padding: 5px 10px;
     margin:10px 0;
+    transition: 0.5s;
 }
 .attrs p:hover {
     background-color: var(--principal);
@@ -176,6 +177,9 @@ hr {
 .attrs-ext p {
     background-color: transparent;
     font-size: 15px;
+}
+.attrs-ext p strong {
+    margin-left: 10%;
 }
 .attrs-ext p:hover {
     background-color: transparent;

@@ -18,7 +18,9 @@
     <br>
     <div class="content">
         <p style='text-align:center'>Estas son las <strong>fuentes de datos</strong> que están definidos actualmente, al dar <strong>click</strong> en una de estas puede ver la información adicional de la misma.</p>
-        
+        <?php
+            generate_sources();
+        ?>
     </div>
     <script src="js/main.js"></script>
 </body>

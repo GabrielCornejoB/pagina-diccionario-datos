@@ -122,6 +122,7 @@ hr {
     margin-top: 110px;
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 300px;
 }
 
 .terms p {
@@ -142,7 +143,7 @@ hr {
     background-color: var(--principal);
     cursor: pointer;
 }
-.attrs-ext {
+.info {
     background-color:rgba(0, 0, 0, 0.9);
     position: fixed;
     top: 0;
@@ -154,7 +155,7 @@ hr {
     overflow-y: scroll;
     grid-template-columns: 50% 50%;
 }
-.attrs-ext button {
+.info button {
     align-self: right;
     padding: 5px 13px;
     margin: 15px;
@@ -168,20 +169,42 @@ hr {
     cursor: pointer;
     transition: 0.4s;
 }
-.attrs-ext button:hover {
+.info button:hover {
     background-color: var(--principal);
 }
 .close-btn {
     text-align: end;
 }
-.attrs-ext p {
+
+.attrs-srcs {
+    margin-left: 15px;
+}
+.attrs-srcs p{
+    font-size: 20px;
+}
+
+.box {
+    margin-left: 15px;
+}
+.box p {
+    font-size: 15px;
+    background-color: var(--header);
+    padding: 5px 10px;
+    margin:5px 0;
+    transition: 0.5s;
+}
+.box p:hover {
+    background-color: var(--principal);
+    cursor: pointer;
+}
+.info p {
     background-color: transparent;
     font-size: 15px;
 }
-.attrs-ext p strong {
+.info p strong {
     margin-left: 10%;
 }
-.attrs-ext p:hover {
+.info p:hover {
     background-color: transparent;
     cursor: default;
 }

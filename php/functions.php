@@ -53,12 +53,12 @@ function generate_attributes() {
                 echo "<div class='attrs'>";
                 while ($attr = mysqli_fetch_assoc($result_attrs)) {
                     $id_attr = $attr['id_atributo'];
-                    $div_name = "attrs-ext " . $id_attr;
-                    echo "<p onclick='toggle_attrs_info(\"$div_name\")'><strong>Atríbuto:</strong> " . $attr['atributo'] . "</p>";
+                    $div_name = "info " . $id_attr;
+                    echo "<p onclick='toggle_info(\"$div_name\")'><strong>Atríbuto:</strong> " . $attr['atributo'] . "</p>";
 
                     echo "<div class='$div_name' style='display: none;'>";
                     echo    "<p style='font-size:25px;font-weight:bold;'>" . $attr['atributo'] . "</p>";
-                    echo    "<div class='close-btn'><button onclick='toggle_attrs_info(\"$div_name\")'>X</button></div>";
+                    echo    "<div class='close-btn'><button onclick='toggle_info(\"$div_name\")'>X</button></div>";
                     echo    "<p><strong>Descripción:</strong></p><p>" . $attr['descripcion'] . "</p>";
                     echo    "<p><strong>Abreviaturas:</strong></p><p> " . $attr['abreviaturas'] . "</p>";
                     echo    "<p><strong>Referencias:</strong></p><p> " . $attr['referencias'] . "</p>";
@@ -89,6 +89,71 @@ function generate_attributes() {
                 }
                 echo "</div><hr>";
             }
+        }
+        echo "</div>";
+    }
+}
+function generate_sources() {
+    require "php/connection.php";
+    $query_terms = "SELECT * FROM terminos;";
+    $result_terms = mysqli_query($conn, $query_terms);
+    $result_terms_rows = mysqli_num_rows($result_terms);
+
+    if ($result_terms_rows > 0) {
+        echo "<div class='terms'>";
+        while ($term = mysqli_fetch_assoc($result_terms)) {
+            echo "<p><strong>Término:</strong> " . $term['termino'] . "</p>";
+            $id_term = $term['id_termino'];
+
+            $query_attrs = "SELECT * FROM atributos WHERE id_termino=$id_term;";
+            $result_attrs = mysqli_query($conn, $query_attrs);
+            $result_attrs_rows = mysqli_num_rows($result_attrs);
+
+            if ($result_attrs_rows > 0) {
+                echo "<div class='attrs-srcs'>";
+                while ($attr = mysqli_fetch_assoc($result_attrs)) {
+                    echo "<hr><p><strong>Atríbuto:</strong> " . $attr['atributo'] . "</p><hr>";
+                    $id_attr = $attr['id_atributo'];
+
+                    $query_srcs = "SELECT * FROM fuentes WHERE id_atributo=$id_attr;";
+                    $result_srcs = mysqli_query($conn, $query_srcs);
+                    $result_srcs_rows = mysqli_num_rows($result_srcs);
+
+                    if ($result_srcs_rows > 0) {
+                        echo "<div class='box'>";
+                        while ($src = mysqli_fetch_assoc($result_srcs)) {
+                            $id_src = $src['id_fuente'];
+                            $div_name = "info " . $id_src;
+                            echo "<p onclick='toggle_info(\"$div_name\")'><strong>Fuente de datos:</strong> " . $src['sistema_maestro'] . "</p>";
+                            
+                            echo "<div class='$div_name' style='display: none;'>";
+                            echo    "<p style='font-size:25px;font-weight:bold;'>" . $src['sistema_maestro'] . "</p>";
+                            echo    "<div class='close-btn'><button onclick='toggle_info(\"$div_name\")'>X</button></div>";
+                            echo    "<p><strong>Tipo de almacenamiento:</strong></p><p>" . $src['tipo_almacenamiento'] . "</p>";
+                            echo    "<p><strong>Nombre del dato en el sistema:</strong></p><p>" . $src['nombre_atributo'] . "</p>";
+                            echo    "<p><strong>Política de calidad en el sistema:</strong></p><p>" . $src['politica_calidad'] . "</p>";
+                            echo    "<p><strong>Política de seguridad en el sistema:</strong></p><p>" . $src['politica_seguridad'] . "</p>";
+                            echo    "<p><strong>Forma de generación del dato:</strong></p><p>" . $src['forma_generacion'] . "</p>";
+                            $lista_valor = 'NO';
+                            if ($src['lista_de_valor'] == 1) {
+                                $lista_valor = 'SI';
+                            }
+                            echo    "<p><strong>¿Es una lista de valor?:</strong></p><p>" . $lista_valor . "</p>";
+                            $obligatoriedad = 'NO';
+                            if ($src['obligatoriedad'] == 1) {
+                                $obligatoriedad = 'SI';
+                            }
+                            echo    "<p><strong>¿Es un campo obligatorio?:</strong></p><p>" . $obligatoriedad . "</p>";
+                            echo    "<p><strong>Tipo del dato en el sistema:</strong></p><p>" . $src['tipo_dato'] . "</p>";
+                            echo    "<p><strong>Número de caracteres en el sistema:</strong></p><p>" . $src['longitud'] . "</p>";
+                            echo    "<p><strong>Formula si es campo calculado:</strong></p><p>" . $src['formula_campo_calculado'] . "</p>";
+                            echo "</div>";
+                        }
+                        echo "</div>";
+                    }
+                }
+                echo "</div><hr>";
+            }         
         }
         echo "</div>";
     }

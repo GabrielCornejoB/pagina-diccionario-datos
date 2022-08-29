@@ -6,13 +6,32 @@ window.onload = function() {
         nav2.classList.toggle("is-active");
     });
 }
-function toggle_attrs_info (div_name) {
-    console.log("Hola");
+function disableScroll() {
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+    let style = document.createElement("style");
+    style.innerHTML = `body {overflow-y: hidden;}`;
+    document.head.appendChild(style);
+}
+  
+function enableScroll() {
+    window.onscroll = function() {};
+    let style = document.createElement("style");
+    style.innerHTML = `body {overflow-y: scroll;}`;
+    document.head.appendChild(style);
+}
+function toggle_info(div_name) {
     let div =  document.getElementsByClassName(div_name)[0];
     if (div.style.display === 'none') {
         div.style.display = 'grid';
+        disableScroll();
     }
     else {
         div.style.display = 'none';
+        enableScroll();
     }
 }
+

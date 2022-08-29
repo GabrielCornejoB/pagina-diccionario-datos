@@ -16,7 +16,6 @@ function disableScroll() {
     style.innerHTML = `body {overflow-y: hidden;}`;
     document.head.appendChild(style);
 }
-  
 function enableScroll() {
     window.onscroll = function() {};
     let style = document.createElement("style");
@@ -34,4 +33,3 @@ function toggle_info(div_name) {
         enableScroll();
     }
 }
-

@@ -13,12 +13,11 @@ function generate_nav($page_name) {
             "<a href='terminos.php'>Términos de negocio</a>" .
             "<a href='atributos.php'>Atríbutos / Datos</a>" . 
             "<a href='fuentes.php'>Fuentes de Datos</a>" .
-            "<a href='#'>Objetivos</a>" .
-            "<a href='#'>Procesos</a>" .
+            "<a href='objetivos.php'>Objetivos</a>" .
+            "<a href='procesos.php'>Procesos</a>" .
             "<a href='#'>Riesgos</a>" .
         "</nav>";
 }
-
 function generate_terms() {
     require "php/connection.php";
     $query = "SELECT * FROM terminos;";
@@ -33,7 +32,6 @@ function generate_terms() {
         echo "</div>";
     }
 }
-
 function generate_attributes() {
     require "php/connection.php";
     $query_terms = "SELECT * FROM terminos;";

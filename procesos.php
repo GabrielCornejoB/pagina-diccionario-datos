@@ -19,7 +19,7 @@
     <div class="content">
         <p style='text-align:center;margin-bottom:10px;'>Estas son los <strong>procesos</strong> de la compañía impactados por el dato que están definidos actualmente:</p>
         <?php
-            
+            generate_processes();
         ?>
     </div>
     <script src="js/main.js"></script>

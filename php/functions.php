@@ -196,3 +196,43 @@ function generate_objectives() {
         echo "</div>";
     }
 }
+function generate_processes() {
+    require "php/connection.php";
+    $query_terms = "SELECT * FROM terminos;";
+    $result_terms = mysqli_query($conn, $query_terms);
+    $result_terms_rows = mysqli_num_rows($result_terms);
+
+    if ($result_terms_rows > 0) {
+        echo "<div class='terms'>";
+        while ($term = mysqli_fetch_assoc($result_terms)) {
+            echo "<p><strong>Término:</strong>&emsp;" . $term['termino'] . "</p>";
+            $id_term = $term['id_termino'];
+
+            $query_attrs = "SELECT * FROM atributos WHERE id_termino=$id_term;";
+            $result_attrs = mysqli_query($conn, $query_attrs);
+            $result_attrs_rows = mysqli_num_rows($result_attrs);
+
+            if ($result_attrs_rows > 0) {
+                echo "<div class='attrs-srcs'>";
+                while ($attr = mysqli_fetch_assoc($result_attrs)) {
+                    echo "<hr><p><strong>Atríbuto:</strong>&emsp;" . $attr['atributo'] . "</p><hr>";
+                    $id_attr = $attr['id_atributo'];
+
+                    $query_procs = "SELECT * FROM procesos WHERE id_atributo=$id_attr;";
+                    $result_procs = mysqli_query($conn, $query_procs);
+                    $result_procs_rows = mysqli_num_rows($result_procs);
+
+                    if ($result_procs_rows > 0) {
+                        echo "<ul style='margin-left:30px'>";
+                        while ($proc = mysqli_fetch_assoc($result_procs)) {
+                            echo "<li><p style='font-size:15px'><strong>Proceso:</strong>&emsp;" . $proc['proceso'] . "</p></li>";
+                        }
+                        echo "</ul>";
+                    }   
+                }
+                echo "</div><hr>";
+            }
+        }
+        echo "</div>";
+    }
+}

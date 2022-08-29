@@ -17,7 +17,7 @@
     ?>
     <br>
     <div class="content">
-        <p style='text-align:center'>Estos son los <strong>términos de negocio</strong> que están definidos actualmente:</p>
+        <p style='text-align:center;margin-bottom:10px;'>Estos son los <strong>términos de negocio</strong> que están definidos actualmente:</p>
         <?php
             generate_terms();
         ?>

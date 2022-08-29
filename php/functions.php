@@ -27,7 +27,7 @@ function generate_terms() {
     if ($result_rows > 0) {
         echo "<div class='terms'>";
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<p><strong>Término:</strong> " . $row['termino'] . "</p><hr>";
+            echo "<p><strong>Término:</strong>&emsp;" . $row['termino'] . "</p><hr>";
         }
         echo "</div>";
     }
@@ -41,7 +41,7 @@ function generate_attributes() {
     if ($result_terms_rows > 0) {
         echo "<div class='terms'>";
         while ($term = mysqli_fetch_assoc($result_terms)) {
-            echo "<p><strong>Término:</strong> " . $term['termino'] . "</p>";
+            echo "<p><strong>Término:</strong>&emsp;" . $term['termino'] . "</p>";
             $id_term = $term['id_termino'];
 
             $query_attrs = "SELECT * FROM atributos WHERE id_termino=$id_term;";
@@ -52,7 +52,7 @@ function generate_attributes() {
                 while ($attr = mysqli_fetch_assoc($result_attrs)) {
                     $id_attr = $attr['id_atributo'];
                     $div_name = "info " . $id_attr;
-                    echo "<p onclick='toggle_info(\"$div_name\")'><strong>Atríbuto:</strong> " . $attr['atributo'] . "</p>";
+                    echo "<p onclick='toggle_info(\"$div_name\")'><strong>Atríbuto:</strong>&emsp;" . $attr['atributo'] . "</p>";
 
                     echo "<div class='$div_name' style='display: none;'>";
                     echo    "<p style='font-size:25px;font-weight:bold;'>" . $attr['atributo'] . "</p>";
@@ -100,7 +100,7 @@ function generate_sources() {
     if ($result_terms_rows > 0) {
         echo "<div class='terms'>";
         while ($term = mysqli_fetch_assoc($result_terms)) {
-            echo "<p><strong>Término:</strong> " . $term['termino'] . "</p>";
+            echo "<p><strong>Término:</strong>&emsp;" . $term['termino'] . "</p>";
             $id_term = $term['id_termino'];
 
             $query_attrs = "SELECT * FROM atributos WHERE id_termino=$id_term;";
@@ -110,7 +110,7 @@ function generate_sources() {
             if ($result_attrs_rows > 0) {
                 echo "<div class='attrs-srcs'>";
                 while ($attr = mysqli_fetch_assoc($result_attrs)) {
-                    echo "<hr><p><strong>Atríbuto:</strong> " . $attr['atributo'] . "</p><hr>";
+                    echo "<hr><p><strong>Atríbuto:</strong>&emsp;" . $attr['atributo'] . "</p><hr>";
                     $id_attr = $attr['id_atributo'];
 
                     $query_srcs = "SELECT * FROM fuentes WHERE id_atributo=$id_attr;";
@@ -122,7 +122,7 @@ function generate_sources() {
                         while ($src = mysqli_fetch_assoc($result_srcs)) {
                             $id_src = $src['id_fuente'];
                             $div_name = "info " . $id_src;
-                            echo "<p onclick='toggle_info(\"$div_name\")'><strong>Fuente de datos:</strong> " . $src['sistema_maestro'] . "</p>";
+                            echo "<p onclick='toggle_info(\"$div_name\")'><strong>Fuente de datos:</strong>&emsp;" . $src['sistema_maestro'] . "</p>";
                             
                             echo "<div class='$div_name' style='display: none;'>";
                             echo    "<p style='font-size:25px;font-weight:bold;'>" . $src['sistema_maestro'] . "</p>";
@@ -152,6 +152,46 @@ function generate_sources() {
                 }
                 echo "</div><hr>";
             }         
+        }
+        echo "</div>";
+    }
+}
+function generate_objectives() {
+    require "php/connection.php";
+    $query_terms = "SELECT * FROM terminos;";
+    $result_terms = mysqli_query($conn, $query_terms);
+    $result_terms_rows = mysqli_num_rows($result_terms);
+
+    if ($result_terms_rows > 0) {
+        echo "<div class='terms'>";
+        while ($term = mysqli_fetch_assoc($result_terms)) {
+            echo "<p><strong>Término:</strong>&emsp;" . $term['termino'] . "</p>";
+            $id_term = $term['id_termino'];
+
+            $query_attrs = "SELECT * FROM atributos WHERE id_termino=$id_term;";
+            $result_attrs = mysqli_query($conn, $query_attrs);
+            $result_attrs_rows = mysqli_num_rows($result_attrs);
+
+            if ($result_attrs_rows > 0) {
+                echo "<div class='attrs-srcs'>";
+                while ($attr = mysqli_fetch_assoc($result_attrs)) {
+                    echo "<hr><p><strong>Atríbuto:</strong>&emsp;" . $attr['atributo'] . "</p><hr>";
+                    $id_attr = $attr['id_atributo'];
+
+                    $query_objs = "SELECT * FROM objetivos WHERE id_atributo=$id_attr;";
+                    $result_objs = mysqli_query($conn, $query_objs);
+                    $result_objs_rows = mysqli_num_rows($result_objs);
+
+                    if ($result_objs_rows > 0) {
+                        echo "<ul style='margin-left:30px'>";
+                        while ($obj = mysqli_fetch_assoc($result_objs)) {
+                            echo "<li><p style='font-size:15px'><strong>Objetivo:</strong>&emsp;" . $obj['objetivo'] . "</p></li>";
+                        }
+                        echo "</ul>";
+                    }   
+                }
+                echo "</div><hr>";
+            }
         }
         echo "</div>";
     }

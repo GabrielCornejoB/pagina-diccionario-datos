@@ -17,7 +17,7 @@
     ?>
     <br>
     <div class="content">
-        <p style='text-align:center'>Estos son los <strong>atríbutos</strong> que están definidos actualmente, al dar <strong>click</strong> en un atríbuto puede ver la información adicional del mismo.</p>
+        <p style='text-align:center;margin-bottom:10px;'>Estos son los <strong>atríbutos</strong> que están definidos actualmente, al dar <strong>click</strong> en un atríbuto puede ver la información adicional del mismo.</p>
         <?php
             generate_attributes();
         ?>

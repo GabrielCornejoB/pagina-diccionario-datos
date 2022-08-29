@@ -17,9 +17,9 @@
     ?>
     <br>
     <div class="content">
-        <p style='text-align:center'>Estas son los <strong>objetivos estratégicos</strong> de la empresa impactados por el dato que están definidos actualmente:</p>
+        <p style='text-align:center;margin-bottom:10px;'>Estas son los <strong>objetivos estratégicos</strong> de la empresa impactados por el dato que están definidos actualmente:</p>
         <?php
-            
+            generate_objectives();
         ?>
     </div>
     <script src="js/main.js"></script>

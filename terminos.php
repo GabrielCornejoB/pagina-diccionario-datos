@@ -22,6 +22,9 @@
             generate_terms();
         ?>
     </div>
+    <form action="php/termCRUD.php" method="post">
+
+    </form>
 
     <script src="js/main.js"></script>
 </body>

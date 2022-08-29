@@ -27,7 +27,15 @@ function generate_terms() {
     if ($result_rows > 0) {
         echo "<div class='terms'>";
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<p><strong>Término:</strong>&emsp;" . $row['termino'] . "</p><hr>";
+            echo "<div class='text-symbol'>";
+            echo "<p><strong>Término:</strong>&emsp;" . $row['termino'] . "</p>";
+            echo "<form action='editar.php' method='post'>";
+            echo    "<input type='text' name='id_type' value='1' hidden>";
+            echo    "<input type='text' name='term_id' value='" . $row['id_termino'] . "' hidden>";
+            echo    "<input type='text' name='term_desc' value='" . $row['termino'] . "' hidden>";
+            echo    "<button type='submit' class='icon-btn'><span class='material-symbols-outlined'>edit</span></button>";
+            echo "</form>";
+            echo "</div><hr>";
         }
         echo "</div>";
     }

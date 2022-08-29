@@ -23,10 +23,10 @@
             generate_terms();
         ?>
     </div>
-    <form action="php/crud_term.php" method="post" class='create-form'>
-        <p>En esta sección se pueden agregar nuevos Términos de negocio. En el campo de texto que se encuentra a continuación, ingrese el nuevo Término y luego presione <strong>"Agregar"</strong> para adicionarlo a la base de datos.</p>
+    <form action="php/crud_term.php" method="post" class='crud-form'>
+        <p>En esta sección se pueden agregar nuevos Términos de negocio. En el campo de texto que se encuentra a continuación, ingrese el nuevo Término y luego presione <strong>"Agregar"</strong> para adicionarlo a la base de datos.</p><hr>
         <br>
-        <input type="text" name="id_type" value='1' hidden>
+        <input type="text" name="id_action" value='1' hidden>
         <input type="text" name="term" placeholder='Término de negocio' title='Escriba aquí el nuevo término de negocio' required>
         <br><br>
         <button type="submit">Agregar</button>

@@ -208,7 +208,7 @@ hr {
     cursor: default;
 }
 
-.create-form {
+.crud-form {
     margin-left: 10%;
     margin-right: 10%;
     background-color: var(--header);
@@ -217,7 +217,7 @@ hr {
     text-align: center;
     margin-bottom: 30px;
 }
-.create-form input {
+.crud-form input {
     padding: 7px 5px;
     width: 60%;
     
@@ -225,7 +225,7 @@ hr {
     text-decoration: none;
     font-size: 16px;
 }
-.create-form button {
+.crud-form button {
     padding: 5px 10px;
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
@@ -237,8 +237,14 @@ hr {
     transition: 0.5s;
     cursor: pointer;
 }
-.create-form button:hover {
+.crud-form button:hover {
     background-color: var(--principal);
+}
+
+.text-symbol {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /* Scrollbar */
@@ -250,4 +256,27 @@ hr {
 }
 ::-webkit-scrollbar-thumb {
     background: var(--principal);
+}
+
+/* Icons */
+.material-symbols-outlined {
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+.icon-btn {
+    background: transparent;
+    border: none;
+    transition: 0.5s;
+    border-radius: 50%;
+}
+.icon-btn:hover {
+    background: var(--principal);
+    transform: scale(1.2) rotate(-45deg);
+    cursor: pointer;
 }

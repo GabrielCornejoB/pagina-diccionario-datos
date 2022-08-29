@@ -34,6 +34,18 @@ if (isset($_POST['id_action'])) {
         }
     }
     elseif ($id_action == 3) {    // DELETE
+        if (isset($_POST['crud_term_id'])) {
+            require_once 'connection.php';
+            $term_id = $_POST['crud_term_id'];
 
+            $query = "DELETE FROM terminos WHERE id_termino=$term_id;";
+            mysqli_query($conn, $query);
+            header("location: ../terminos.php");
+            exit();
+        }
+        else {      // Error
+            header("location: ../index.php");
+            exit();
+        }
     }
 }

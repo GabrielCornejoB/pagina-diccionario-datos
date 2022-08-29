@@ -26,11 +26,17 @@
                         $term_desc = $_POST['term_desc'];
                         echo "<form action='php/crud_term.php' method='post' class='crud-form'>";
                         echo    "<p>En esta sección puede editar el Término de negocio que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";
-                        
                         echo    "<input type='text' name='id_action' value='2' hidden>";
                         echo    "<input type='text' name='crud_term_id' value='" . $term_id . "' hidden>";
                         echo    "<input type='text' name='crud_term_desc' placeholder='" . $term_desc . "' title='Escriba aquí el nuevo valor del término' required><br><br>";
                         echo    "<button type='submit'>Actualizar</button>";
+                        echo "</form>";
+
+                        echo "<form action='php/crud_term.php' method='post' class='crud-form'>";
+                        echo    "<p style='color:red'>¡CUIDADO!, presionando el botón <strong>\"Eliminar\"</strong> eliminará el término de negocio y todos los datos que estén relacionados a este. Esto no tiene vuelta atras.</p>";
+                        echo    "<input type='text' name='id_action' value='3' hidden>";
+                        echo    "<input type='text' name='crud_term_id' value='" . $term_id . "' hidden>";
+                        echo    "<br><button type='submit'>ELIMINAR</button>";
                         echo "</form>";
                     }
                 }

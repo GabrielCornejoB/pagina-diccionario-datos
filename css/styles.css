@@ -122,7 +122,6 @@ hr {
     margin-top: 110px;
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 300px;
 }
 
 .terms p {
@@ -207,6 +206,39 @@ hr {
 .info p:hover {
     background-color: transparent;
     cursor: default;
+}
+
+.create-form {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: var(--header);
+    padding: 15px 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.create-form input {
+    padding: 7px 5px;
+    width: 60%;
+    
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+}
+.create-form button {
+    padding: 5px 10px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    border: 3px solid var(--principal);
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.create-form button:hover {
+    background-color: var(--principal);
 }
 
 /* Scrollbar */

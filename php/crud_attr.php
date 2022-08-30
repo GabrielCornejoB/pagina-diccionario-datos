@@ -86,6 +86,12 @@ if (isset($_POST['id_action'])) {
         exit();
     }
     elseif ($id_action == 3) {
+        require_once "connection.php";
+        $attr_id = $_POST['crud_attr_id'];
 
+        $query = "DELETE FROM atributos WHERE id_atributo=$attr_id;";
+        mysqli_query($conn, $query);
+        header("location: ../atributos.php");
+        exit();
     }
 }

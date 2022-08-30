@@ -36,7 +36,6 @@
                     generate_select_terms();
                 ?>
         </select></div><br>
-
         <div class='form-row'><p>Nombre del atríbuto</p><input type='text' name='crud_attr_atributo' required></div><br>
         <div class='form-row'><p>Descripción:</p><textarea type='text' name='crud_attr_descripcion' required></textarea></div><br>
         <div class='form-row'><p>Descripción:</p><textarea type='text' name='crud_attr_descripcion' required></textarea></div><br>

@@ -60,7 +60,17 @@ function generate_attributes() {
                 while ($attr = mysqli_fetch_assoc($result_attrs)) {
                     $id_attr = $attr['id_atributo'];
                     $div_name = "info " . $id_attr;
-                    echo "<p onclick='toggle_info(\"$div_name\")'><strong>Atríbuto:</strong>&emsp;" . $attr['atributo'] . "</p>";
+
+                    echo "<div class='text-symbol'>";
+                    echo "<p onclick='toggle_info(\"$div_name\")' style='width:95%;'><strong>Atríbuto:</strong>&emsp;" . $attr['atributo'] . "</p>";
+
+                    echo "<form action='editar.php' method='post' class='form-icon'>";
+                    echo    "<input type='text' name='id_type' value='2' hidden>";
+                    echo    "<input type='text' name='attr_id' value='" . $attr['id_atributo'] . "' hidden>";
+                    echo    "<button type='submit' class='icon-btn icon-attr'><span class='material-symbols-outlined'>edit</span></button>";
+                    echo "</form>";
+
+                    echo "</div>";
 
                     echo "<div class='$div_name' style='display: none;'>";
                     echo    "<p style='font-size:25px;font-weight:bold;'>" . $attr['atributo'] . "</p>";
@@ -93,8 +103,9 @@ function generate_attributes() {
                     echo    "<p><strong>Personas o áreas que aprueban:</strong></p><p> " . $attr['aprueban'] . "</p>";
                     echo "</div>";
                 }
-                echo "</div><hr>";
+                echo "</div>";
             }
+            echo "<hr>";
         }
         echo "</div>";
     }
@@ -242,5 +253,17 @@ function generate_processes() {
             }
         }
         echo "</div>";
+    }
+}
+function generate_select_terms() {
+    require "php/connection.php";
+    $query = "SELECT * FROM terminos;";
+    mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
+    $result_rows = mysqli_num_rows($result);
+    if ($result_rows > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option value='" . $row['id_termino'] . "'>" . $row['termino'] . "</option>";
+        }
     }
 }

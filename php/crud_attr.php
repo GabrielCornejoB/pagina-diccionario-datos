@@ -73,7 +73,7 @@ if (isset($_POST['id_action'])) {
                     abreviaturas='$attr_abreviaturas', referencias='$attr_referencias',
                     terminos_datos_relac='$attr_terminos', politica_calidad='$attr_polCalidad',
                     politica_seguridad='$attr_polSeguridad', data_decay='$attr_decay',
-                    indicadores_caidad='$attr_indicadores', fichas_calidad='$attr_fichas',
+                    indicadores_calidad='$attr_indicadores', fichas_calidad='$attr_fichas',
                     propietario='$attr_propietario', data_steward='$attr_steward',
                     personal_captura='$attr_captura', personal_actualizacion='$attr_actualizacion',
                     personal_utiliza='$attr_utilizacion', formato='$attr_formato',

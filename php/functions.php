@@ -169,8 +169,9 @@ function generate_sources() {
                         echo "</div>";
                     }
                 }
-                echo "</div><hr>";
-            }         
+                echo "</div>";
+            }     
+            echo "<hr>";    
         }
         echo "</div>";
     }
@@ -209,8 +210,9 @@ function generate_objectives() {
                         echo "</ul>";
                     }   
                 }
-                echo "</div><hr>";
+                echo "</div>";
             }
+            echo "<hr>";
         }
         echo "</div>";
     }
@@ -249,8 +251,9 @@ function generate_processes() {
                         echo "</ul>";
                     }   
                 }
-                echo "</div><hr>";
+                echo "</div>";
             }
+            echo "<hr>";
         }
         echo "</div>";
     }

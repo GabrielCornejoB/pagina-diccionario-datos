@@ -11,11 +11,20 @@ if (isset($_POST['id_action'])) {
         header("location: ../objetivos.php");
         exit();
     }
-    if ($id_action == 2) {
+    elseif ($id_action == 2) {
         require_once 'connection.php';
         $id_obj = $_POST['crud_obj_id'];
         $obj = $_POST['crud_obj_desc'];
         $query = "UPDATE objetivos SET objetivo='$obj' WHERE id_objetivo=$id_obj;";
+        mysqli_query($conn, $query);
+        header("location: ../objetivos.php");
+        exit();
+    }
+    elseif ($id_action == 3) {
+        require_once 'connection.php';
+        $obj_id = $_POST['crud_obj_id'];
+
+        $query = "DELETE FROM objetivos WHERE id_objetivo=$obj_id;";
         mysqli_query($conn, $query);
         header("location: ../objetivos.php");
         exit();

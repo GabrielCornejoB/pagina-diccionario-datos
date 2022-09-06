@@ -98,13 +98,18 @@
                         $obj_id = $_POST['obj_id'];
                         $obj_desc = $_POST['obj_desc'];
                         echo "<form action='php/crud_obj.php' method='post' class='crud-form'>";
-                        echo    "<p>En esta sección puede editar el Objetivo estratégico que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";
-                        
+                        echo    "<p>En esta sección puede editar el Objetivo estratégico que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";          
                         echo    "<input type='text' name='id_action' value='2' hidden>";
                         echo    "<input type='text' name='crud_obj_id' value='" . $obj_id . "' hidden>";
                         echo    "<input type='text' name='crud_obj_desc' placeholder='" . $obj_desc . "' title='Escriba aquí el nuevo valor del objetivo' required><br><br>";
                         echo    "<button type='submit'>Actualizar</button>";
+                        echo "</form>";
 
+                        echo "<form action='php/crud_obj.php' method='post' class='crud-form'>";
+                        echo    "<p style='color:red'>¡CUIDADO!, presionando el botón <strong>\"Eliminar\"</strong> eliminará el objetivo estratégico. Esto no tiene vuelta atras.</p>";
+                        echo    "<input type='text' name='id_action' value='3' hidden>";
+                        echo    "<input type='text' name='crud_obj_id' value='" . $obj_id . "' hidden>";
+                        echo    "<br><button type='submit'>ELIMINAR</button>";
                         echo "</form>";
                     }
                 }

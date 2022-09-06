@@ -38,8 +38,6 @@
         </select></div><br>
         <div class='form-row'><p>Nombre del atríbuto</p><input type='text' name='crud_attr_atributo' required></div><br>
         <div class='form-row'><p>Descripción:</p><textarea type='text' name='crud_attr_descripcion' required></textarea></div><br>
-        <div class='form-row'><p>Descripción:</p><textarea type='text' name='crud_attr_descripcion' required></textarea></div><br>
-        <div class='form-row'><p>Descripción:</p><textarea type='text' name='crud_attr_descripcion' required></textarea></div><br>
         <div class='form-row'><p>Abreviaturas:</p><input type='text' name='crud_attr_abreviaturas' required></div><br>
         <div class='form-row'><p>Referencias:</p><input type='text' name='crud_attr_referencias' required></div><br>
         <div class='form-row'><p>Términos/Datos relacionados:</p><input type='text' name='crud_attr_terminos' required></div><br>

@@ -22,6 +22,24 @@
             generate_objectives();
         ?>
     </div>
+    <form action="php/crud_obj.php" method="post" class='crud-form'>
+    <p>En esta sección se pueden agregar nuevos Objetivos estratégicos. Primero seleccione a que atríbuto pertenecerá este, y luego, en el campo de texto, ingrese el nuevo Objetivo y luego presione <strong>"Agregar"</strong> para adicionarlo a la base de datos.</p><hr>
+    <br>
+    <input type="text" name="id_action" value='1' hidden>
+    <div class="form-row">
+        <p>Atríbuto del objetivo</p>
+        <select name="crud_obj_idAttr" id="terms" style='width:60%' required>
+        <option disabled selected value style="color:gray"> -- seleccione el atríbuto al que pertenecerá el nuevo objetivo -- </option>             
+        <?php
+            generate_select_attrs();
+        ?>
+        </select>
+    </div>
+    <br>
+    <div class="form-row"><p>Descripción del objetivo estratégico</p><input type="text" name="obj" placeholder="Objetivo estratégico" title='Escriba aquí el nuevo objetivo estratégico' required></div>
+    <br><br>
+    <button type="submit">Agregar</button>
+    </form>
     <script src="js/main.js"></script>
 </body>
 </html>

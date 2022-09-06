@@ -270,3 +270,15 @@ function generate_select_terms() {
         }
     }
 }
+function generate_select_attrs() {
+    require "php/connection.php";
+    $query = "SELECT * FROM atributos;";
+    mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
+    $result_rows = mysqli_num_rows($result);
+    if ($result_rows > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option value='" . $row['id_atributo'] . "'>" . $row['atributo'] . "</option>";
+        }
+    }
+}

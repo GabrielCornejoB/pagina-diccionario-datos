@@ -22,4 +22,13 @@ if (isset($_POST['id_action'])) {
         header("location: ../procesos.php");
         exit();
     }
+    elseif ($id_action == 3) {
+        require_once 'connection.php';
+        $id_proc = $_POST['crud_proc_id'];
+
+        $query = "DELETE FROM procesos WHERE id_proceso=$id_proc;";
+        mysqli_query($conn, $query);
+        header("location: ../procesos.php");
+        exit();
+    }
 }

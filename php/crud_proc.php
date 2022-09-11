@@ -12,4 +12,14 @@ if (isset($_POST['id_action'])) {
         header("location: ../procesos.php");
         exit();
     }
+    elseif ($id_action == 2) {
+        require_once 'connection.php';
+        $id_proc = $_POST['crud_proc_id'];
+        $proc = $_POST['crud_proc_desc'];
+
+        $query = "UPDATE procesos SET proceso='$proc' WHERE id_proceso=$id_proc;";
+        mysqli_query($conn, $query);
+        header("location: ../procesos.php");
+        exit();
+    }
 }

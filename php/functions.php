@@ -254,7 +254,15 @@ function generate_processes() {
                     if ($result_procs_rows > 0) {
                         echo "<ul style='margin-left:30px'>";
                         while ($proc = mysqli_fetch_assoc($result_procs)) {
+                            echo "<div class='text-symbol'>";
                             echo "<li><p style='font-size:15px'><strong>Proceso:</strong>&emsp;" . $proc['proceso'] . "</p></li>";
+                            echo "<form action='editar.php' method='post' class='form-icon'>";
+                            echo    "<input type='text' name='id_type' value='5' hidden>";
+                            echo    "<input type='text' name='proc_id' value='" . $proc['id_proceso'] . "' hidden>";
+                            echo    "<input type='text' name='proc_desc' value='" . $proc['proceso'] . "' hidden>";
+                            echo    "<button type='submit' class='icon-btn icon-obj'><span class='material-symbols-outlined' style='font-size: 17px;'>edit</span></button>";
+                            echo "</form>";
+                            echo "</div>";
                         }
                         echo "</ul>";
                     }   

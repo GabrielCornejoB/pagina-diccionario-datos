@@ -114,7 +114,24 @@
                     }
                 }
                 elseif ($id_type == 5) {        // Proc
-                    
+                    if (isset($_POST['proc_id'])) { 
+                        $proc_id = $_POST['proc_id'];
+                        $proc_desc = $_POST['proc_desc'];
+                        echo "<form action='php/crud_proc.php' method='post' class='crud-form'>";
+                        echo    "<p>En esta sección puede editar el Proceso que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";          
+                        echo    "<input type='text' name='id_action' value='2' hidden>";
+                        echo    "<input type='text' name='crud_proc_id' value='" . $proc_id . "' hidden>";
+                        echo    "<input type='text' name='crud_proc_desc' placeholder='" . $proc_desc . "' title='Escriba aquí el nuevo valor del objetivo' required><br><br>";
+                        echo    "<button type='submit'>Actualizar</button>";
+                        echo "</form>";
+
+                        echo "<form action='php/crud_proc.php' method='post' class='crud-form'>";
+                        echo    "<p style='color:red'>¡CUIDADO!, presionando el botón <strong>\"Eliminar\"</strong> eliminará el proceso. Esto no tiene vuelta atras.</p>";
+                        echo    "<input type='text' name='id_action' value='3' hidden>";
+                        echo    "<input type='text' name='crud_proc_id' value='" . $proc_id . "' hidden>";
+                        echo    "<br><button type='submit'>ELIMINAR</button>";
+                        echo "</form>";
+                    }
                 }
             }
         ?>

@@ -24,7 +24,7 @@
         ?>
     </div>
     <form action="php/crud_obj.php" method="post" class='crud-form'>
-    <p>En esta sección se pueden agregar nuevos Objetivos estratégicos. Primero seleccione a que atríbuto pertenecerá este, y luego, en el campo de texto, ingrese el nuevo Objetivo y luego presione <strong>"Agregar"</strong> para adicionarlo a la base de datos.</p><hr>
+    <p>En esta sección se pueden agregar nuevos Objetivos estratégicos. Primero seleccione a que atríbuto pertenecerá este, y luego, en el campo de texto, ingrese el nuevo Objetivo y por ultimo presione <strong>"Agregar"</strong> para adicionarlo a la base de datos.</p><hr>
     <br>
     <input type="text" name="id_action" value='1' hidden>
     <div class="form-row">

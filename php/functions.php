@@ -15,7 +15,7 @@ function generate_nav($page_name) {
             "<a href='fuentes.php'>Fuentes de Datos</a>" .
             "<a href='objetivos.php'>Objetivos</a>" .
             "<a href='procesos.php'>Procesos</a>" .
-            "<a href='#'>Riesgos</a>" .
+            // "<a href='#'>Riesgos</a>" .
         "</nav>";
 }
 function generate_terms() {
@@ -141,8 +141,13 @@ function generate_sources() {
                         while ($src = mysqli_fetch_assoc($result_srcs)) {
                             $id_src = $src['id_fuente'];
                             $div_name = "info " . $id_src;
+
+
+                            
                             echo "<p onclick='toggle_info(\"$div_name\")'><strong>Fuente de datos:</strong>&emsp;" . $src['sistema_maestro'] . "</p>";
                             
+
+
                             echo "<div class='$div_name' style='display: none;'>";
                             echo    "<p style='font-size:25px;font-weight:bold;'>" . $src['sistema_maestro'] . "</p>";
                             echo    "<div class='close-btn'><button onclick='toggle_info(\"$div_name\")'>X</button></div>";

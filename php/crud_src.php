@@ -50,4 +50,13 @@ if (isset($_POST['id_action'])) {
         header("location: ../fuentes.php");
         exit();
     }
+    elseif ($id_action == 3){
+        require_once 'connection.php';
+
+        $src_id = $_POST['crud_src_id'];
+        $query = "DELETE FROM fuentes WHERE id_fuente=$src_id;";
+        mysqli_query($conn, $query);
+        header("location: ../fuentes.php");
+        exit();
+    }
 }

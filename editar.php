@@ -91,7 +91,41 @@
                     }
                 }
                 elseif ($id_type == 3) {        // Src
-                    
+                    if (isset($_POST['src_id'])) {
+                        $src_id = $_POST['src_id'];
+                        require_once "php/connection.php";
+                        $query = "SELECT * FROM fuentes WHERE id_fuente=$src_id;";
+                        $sql_src = mysqli_query($conn, $query);
+                        $src = mysqli_fetch_assoc($sql_src);
+
+                        echo "<form action='php/crud_src.php' method='post' class='crud-form'>";
+                        echo    "<p>En esta sección puede editar la Fuente de Datos que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";
+                        echo    "<input type='text' name='id_action' value='2' hidden>";
+                        echo    "<input type='text' name='crud_src_id' value='" . $src_id . "' hidden>";
+
+                        echo "<div class='form-row'><p>Nombre del sistema maestro:</p><input type='text' name='crud_src_name' placeholder='" . $src['sistema_maestro'] . "' required></div><br>";
+                        echo "<div class='form-row'><p>Tipo de almacenamiento del sistema:</p><input type='text' name='crud_src_type' placeholder='" . $src['tipo_almacenamiento'] . "' required></div><br>";
+                        echo "<div class='form-row'><p>Nombre del atríbuto en el sistema maestro:</p><input type='text' name='crud_src_attr' placeholder='" . $src['nombre_atributo'] . "' required></div><br>";
+                        echo "<div class='form-row'><p>Política de calidad en el sistema:</p><textarea type='text' name='crud_src_qual' placeholder='" . $src['politica_calidad'] . "' required></textarea></div><br>";
+                        echo "<div class='form-row'><p>Política de seguridad en el sistema:</p><textarea type='text' name='crud_src_secu' placeholder='" . $src['politica_seguridad'] . "' required></textarea></div><br>";
+                        echo "<div class='form-row'><p>Forma de generación del atríbuto:</p><textarea type='text' name='crud_src_gen' placeholder='" . $src['forma_generacion'] . "' required></textarea></div>";
+                        echo "<br><div class='form-row'><p>¿Es lista de valor en el sistema?</p><div class='radios'><label>SI</label><input type='radio' name='crud_src_list' id='si' value='1' checked><label>NO</label><input type='radio' name='crud_src_list'id='no' value='0'></div></div><br>";
+                        echo "<div class='form-row'><p>¿Es obligatorio en el sistema?</p><div class='radios'><label>SI</label><input type='radio' name='crud_src_obl' id='si' value='1' checked><label>NO</label><input type='radio' name='crud_src_obl'id='no' value='0'></div></div><br>";
+                        echo "<div class='form-row'><p>Tipo del atríbuto en el sistema:</p><input type='text' name='crud_src_attrType' placeholder='" . $src['tipo_dato'] . "' required></div><br>";
+                        echo "<div class='form-row'><p>Longitud del atríbuto en el sistema:</p><input type='text' name='crud_src_attrLen' placeholder='" . $src['longitud'] . "' required></div><br>";
+                        echo "<div class='form-row'><p>Formula de como lo calcula el sistema:</p><input type='text' name='crud_src_attrCalc' placeholder='" . $src['formula_campo_calculado'] . "' required></div><br>";
+                        echo "<button type='submit'>Actualizar</button>";
+
+                        echo "</form>";
+
+
+                        echo "<form action='php/crud_src.php' method='post' class='crud-form'>";
+                        echo    "<p style='color:red'>¡CUIDADO!, presionando el botón <strong>\"Eliminar\"</strong> eliminará la Fuente de Datos y todos los datos que estén relacionados a este. Esto no tiene vuelta atras.</p>";
+                        echo    "<input type='text' name='id_action' value='3' hidden>";
+                        echo    "<input type='text' name='crud_src_id' value='" . $src_id . "' hidden>";
+                        echo    "<br><button type='submit'>ELIMINAR</button>";
+                        echo "</form>";
+                    }
                 }
                 elseif ($id_type == 4) {        // Obj
                     if (isset($_POST['obj_id'])) {

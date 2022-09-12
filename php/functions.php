@@ -143,9 +143,14 @@ function generate_sources() {
                             $div_name = "info " . $id_src;
 
 
-                            
-                            echo "<p onclick='toggle_info(\"$div_name\")'><strong>Fuente de datos:</strong>&emsp;" . $src['sistema_maestro'] . "</p>";
-                            
+                            echo "<div class='text-symbol'>";
+                            echo "<p onclick='toggle_info(\"$div_name\")' style='width:95%'><strong>Fuente de datos:</strong>&emsp;" . $src['sistema_maestro'] . "</p>";
+                            echo "<form action='editar.php' method='post' class='form-icon' style='margin-top:5px'>";
+                            echo    "<input type='text' name='id_type' value='2' hidden>";
+                            echo    "<input type='text' name='attr_id' value='" . $attr['id_atributo'] . "' hidden>";
+                            echo    "<button type='submit' class='icon-btn '><span class='material-symbols-outlined' style='font-size:20px;'>edit</span></button>";
+                            echo "</form>";
+                            echo "</div>";
 
 
                             echo "<div class='$div_name' style='display: none;'>";

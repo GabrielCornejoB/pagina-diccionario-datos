@@ -318,6 +318,7 @@ select {
 .icon-obj {
     margin: 0;
 }
+
 .icon-btn:hover {
     background: var(--principal);
     transform: scale(1.2) rotate(-45deg);

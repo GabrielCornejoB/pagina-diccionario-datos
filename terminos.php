@@ -27,7 +27,11 @@
         <p>En esta sección se pueden agregar nuevos Términos de negocio. En el campo de texto que se encuentra a continuación, ingrese el nuevo Término y luego presione <strong>"Agregar"</strong> para adicionarlo a la base de datos.</p><hr>
         <br>
         <input type="text" name="id_action" value='1' hidden>
-        <input type="text" name="term" placeholder='Término de negocio' title='Escriba aquí el nuevo término de negocio' required>
+    
+        <div class="form-row"><p>Término de negocio</p><input type="text" name="term" placeholder='Término de negocio' title='Escriba aquí el nuevo término de negocio' required></div>  
+        <br>
+        <div class="form-row"><p>Explicación del término de negocio</p><textarea type="text" name="term_exp" placeholder='Explicación del término de negocio' title='Escriba aquí la explicación del nuevo término de negocio' required></textarea></div>
+        
         <br><br>
         <button type="submit">Agregar</button>
     </form>

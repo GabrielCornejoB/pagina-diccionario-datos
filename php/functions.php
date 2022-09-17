@@ -33,9 +33,12 @@ function generate_terms() {
             echo    "<input type='text' name='id_type' value='1' hidden>";
             echo    "<input type='text' name='term_id' value='" . $row['id_termino'] . "' hidden>";
             echo    "<input type='text' name='term_desc' value='" . $row['termino'] . "' hidden>";
+            echo    "<input type='text' name='term_exp' value='" . $row['explicacion_termino'] . "' hidden>";
             echo    "<button type='submit' class='icon-btn'><span class='material-symbols-outlined'>edit</span></button>";
             echo "</form>";
-            echo "</div><hr>";
+            echo "</div>";
+            echo "<p class='term-exp' style='font-size: 15px;'>&emsp;<strong>Explicación del Término:</strong>&emsp;" . $row['explicacion_termino'] . "</p><hr>";
+            
         }
         echo "</div>";
     }

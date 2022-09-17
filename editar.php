@@ -21,14 +21,18 @@
             if (isset($_POST['id_type'])) {
                 $id_type = $_POST['id_type'];
                 if ($id_type == 1) {            // Term
-                    if (isset($_POST['term_id']) && isset($_POST['term_desc'])) {
+                    if (isset($_POST['term_id']) && isset($_POST['term_desc']) && isset($_POST['term_exp'])) {
                         $term_id = $_POST['term_id'];
                         $term_desc = $_POST['term_desc'];
+                        $term_exp = $_POST['term_exp'];
+
                         echo "<form action='php/crud_term.php' method='post' class='crud-form'>";
                         echo    "<p>En esta sección puede editar el Término de negocio que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";
                         echo    "<input type='text' name='id_action' value='2' hidden>";
                         echo    "<input type='text' name='crud_term_id' value='" . $term_id . "' hidden>";
                         echo    "<input type='text' name='crud_term_desc' placeholder='" . $term_desc . "' title='Escriba aquí el nuevo valor del término' required><br><br>";
+                        echo    "<input type='text' name='crud_term_exp' placeholder='" . $term_exp . "' title='Escriba aquí la nueva explicación del término' required><br><br>";
+
                         echo    "<button type='submit'>Actualizar</button>";
                         echo "</form>";
 

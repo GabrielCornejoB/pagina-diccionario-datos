@@ -38,7 +38,14 @@
         </div><br>
 
         <div class="form-row"><p>Nombre del sistema maestro:</p><input type='text' name='crud_src_name' required></div><br>
-        <div class="form-row"><p>Tipo de almacenamiento del sistema:</p><input type='text' name='crud_src_type' required></div><br>
+        <div class="form-row"><p>Tipo de almacenamiento del sistema:</p>
+        <select name="crud_src_type" id="src_type" style='width:60%' required>
+        <option disabled selected value style="color:gray"> -- seleccione el tipo de almacenamiento de la nueva fuente de datos -- </option>
+            <option value="Nube">Nube</option>
+            <option value="Servidor interno">Servidor interno</option>
+            <option value="Servidor externo">Servidor externo</option>
+        </select>
+        </div><br>
         <div class="form-row"><p>Nombre del atríbuto en el sistema maestro:</p><input type='text' name='crud_src_attr' required></div><br>
         <div class="form-row"><p>Política de calidad en el sistema:</p><textarea type='text' name='crud_src_qual' required></textarea></div><br>
         <div class="form-row"><p>Política de seguridad en el sistema:</p><textarea type='text' name='crud_src_secu' required></textarea></div><br>

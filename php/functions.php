@@ -15,7 +15,7 @@ function generate_nav($page_name) {
             "<a href='fuentes.php'>Fuentes de Datos</a>" .
             "<a href='objetivos.php'>Objetivos</a>" .
             "<a href='procesos.php'>Procesos</a>" .
-            // "<a href='#'>Riesgos</a>" .
+            "<a href='riesgos.php'>Riesgos</a>" .
         "</nav>";
 }
 function generate_terms() {
@@ -273,6 +273,55 @@ function generate_processes() {
                             echo    "<input type='text' name='id_type' value='5' hidden>";
                             echo    "<input type='text' name='proc_id' value='" . $proc['id_proceso'] . "' hidden>";
                             echo    "<input type='text' name='proc_desc' value='" . $proc['proceso'] . "' hidden>";
+                            echo    "<button type='submit' class='icon-btn icon-obj'><span class='material-symbols-outlined' style='font-size: 17px;'>edit</span></button>";
+                            echo "</form>";
+                            echo "</div>";
+                        }
+                        echo "</ul>";
+                    }   
+                }
+                echo "</div>";
+            }
+            echo "<hr>";
+        }
+        echo "</div>";
+    }
+}
+function generate_dangers() {
+    require "php/connection.php";
+    $query_terms = "SELECT * FROM terminos;";
+    $result_terms = mysqli_query($conn, $query_terms);
+    $result_terms_rows = mysqli_num_rows($result_terms);
+
+    if ($result_terms_rows > 0) {
+        echo "<div class='terms'>";
+        while ($term = mysqli_fetch_assoc($result_terms)) {
+            echo "<p><strong>Término:</strong>&emsp;" . $term['termino'] . "</p>";
+            $id_term = $term['id_termino'];
+
+            $query_attrs = "SELECT * FROM atributos WHERE id_termino=$id_term;";
+            $result_attrs = mysqli_query($conn, $query_attrs);
+            $result_attrs_rows = mysqli_num_rows($result_attrs);
+
+            if ($result_attrs_rows > 0) {
+                echo "<div class='attrs-srcs'>";
+                while ($attr = mysqli_fetch_assoc($result_attrs)) {
+                    echo "<hr><p><strong>Atríbuto:</strong>&emsp;" . $attr['atributo'] . "</p>";
+                    $id_attr = $attr['id_atributo'];
+
+                    $query_dangs = "SELECT * FROM riesgos WHERE id_atributo=$id_attr;";
+                    $result_dangs = mysqli_query($conn, $query_dangs);
+                    $result_dangs_rows = mysqli_num_rows($result_dangs);
+                    if ($result_dangs_rows > 0) {
+                        echo "<hr>";
+                        echo "<ul style='margin-left:30px'>";
+                        while ($dang = mysqli_fetch_assoc($result_dangs)) {
+                            echo "<div class='text-symbol'>";
+                            echo "<li><p style='font-size:15px'><strong>Riesgo:</strong>&emsp;" . strtoupper($dang['riesgo']) . ":&emsp;" . $dang['explicacion_riesgo'] . "</p></li>";
+                            echo "<form action='editar.php' method='post' class='form-icon'>";
+                            echo    "<input type='text' name='id_type' value='6' hidden>";
+                            echo    "<input type='text' name='dang_id' value='" . $dang['id_riesgo'] . "' hidden>";
+                            echo    "<input type='text' name='dang_desc' value='" . $dang['riesgo'] . "' hidden>";
                             echo    "<button type='submit' class='icon-btn icon-obj'><span class='material-symbols-outlined' style='font-size: 17px;'>edit</span></button>";
                             echo "</form>";
                             echo "</div>";

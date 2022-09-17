@@ -171,6 +171,9 @@
                         echo "</form>";
                     }
                 }
+                elseif ($id_type == 6) {
+                    echo "Holi";
+                }
             }
         ?>
     </div>

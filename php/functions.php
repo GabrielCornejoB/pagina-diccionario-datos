@@ -11,7 +11,7 @@ function generate_nav($page_name) {
     echo "<nav class='navbar-2'>" .
             "<a href='index.php'>Inicio</a>" .
             "<a href='terminos.php'>Términos de negocio</a>" .
-            "<a href='atributos.php'>Atríbutos / Datos</a>" . 
+            "<a href='atributos.php'>Atríbutos de Datos</a>" . 
             "<a href='fuentes.php'>Fuentes de Datos</a>" .
             "<a href='objetivos.php'>Objetivos</a>" .
             "<a href='procesos.php'>Procesos</a>" .

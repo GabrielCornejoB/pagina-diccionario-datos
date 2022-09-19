@@ -188,6 +188,13 @@
                         echo    "<div class='form-row'><p>Explicación del riesgo</p><textarea type='text' name='crud_dang_exp' placeholder='" . $dang_exp . "' required></textarea></div><br>";
                         echo    "<button type='submit'>Actualizar</button>";
                         echo "</form>";
+
+                        echo "<form action='php/crud_dang.php' method='post' class='crud-form'>";
+                        echo    "<p style='color:red'>¡CUIDADO!, presionando el botón <strong>\"Eliminar\"</strong> eliminará el riesgo. Esto no tiene vuelta atras.</p>";
+                        echo    "<input type='text' name='id_action' value='3' hidden>";
+                        echo    "<input type='text' name='crud_dang_id' value='" . $dang_id . "' hidden>";
+                        echo    "<br><button type='submit'>ELIMINAR</button>";
+                        echo "</form>";
                     }
                 }
             }

@@ -27,8 +27,13 @@ if (isset($_POST['id_action'])) {
         }
     }
     elseif ($id_action == 3) {
-
-
-        $query = "DELETE";
+        if(isset($_POST['crud_dang_id'])) {
+            require_once 'connection.php';
+            $crud_dang_id = $_POST['crud_dang_id'];
+            $query = "DELETE FROM riesgos WHERE id_riesgo=$crud_dang_id;";
+            mysqli_query($conn, $query);
+            header("location: ../riesgos.php");
+            exit();
+        }
     }
 }

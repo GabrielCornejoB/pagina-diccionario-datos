@@ -321,7 +321,7 @@ function generate_dangers() {
                             echo "<form action='editar.php' method='post' class='form-icon'>";
                             echo    "<input type='text' name='id_type' value='6' hidden>";
                             echo    "<input type='text' name='dang_id' value='" . $dang['id_riesgo'] . "' hidden>";
-                            echo    "<input type='text' name='dang_desc' value='" . $dang['riesgo'] . "' hidden>";
+                            echo    "<input type='text' name='dang_exp' value='" . $dang['explicacion_riesgo'] . "' hidden>";
                             echo    "<button type='submit' class='icon-btn icon-obj'><span class='material-symbols-outlined' style='font-size: 17px;'>edit</span></button>";
                             echo "</form>";
                             echo "</div>";

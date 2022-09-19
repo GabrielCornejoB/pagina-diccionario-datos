@@ -38,10 +38,10 @@
         <div class="form-row">
             <p>Riesgo para el atríbuto</p>
             <select name="crud_dang" id="dangs" style="width:60%" required>
-            <option disabled selected value style="color:gray"> -- seleccione el riesgo para el atríbuto -- </option>
-            <option value="Filtración">Filtración</option>
-            <option value="Cumplimiento">Cumplimiento</option>
-        </select>
+                <option disabled selected value style="color:gray"> -- seleccione el riesgo para el atríbuto -- </option>
+                <option value="Filtración">Filtración</option>
+                <option value="Cumplimiento">Cumplimiento</option>
+            </select>
         </div><br>
         <div class="form-row"><p>Explicación del riesgo</p><textarea type='text' name='crud_dang_exp' required></textarea></div><br>
         <button type='submit'>Agregar</button>";

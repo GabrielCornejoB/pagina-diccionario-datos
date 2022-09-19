@@ -174,17 +174,20 @@
                     if (isset($_POST['dang_id']) && isset($_POST['dang_exp'])) {
                         $dang_id = $_POST['dang_id'];
                         $dang_exp = $_POST['dang_exp'];
-            //             echo "<form action='php/crud_dang.php' method='post' class='crud-form'>";
-            //             echo    "<p>En esta sección puede editar el Riesgo que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";          
-            //             echo    "<input type='text' name='id_action' value='2' hidden>";
-            //             echo    "<select name='crud_dang' id='dangs' style='width:60%' required>";
-
-            //             <select name="crud_dang" id="dangs" style="width:60%" required>
-            //     <option disabled selected value style="color:gray"> -- seleccione el riesgo para el atríbuto -- </option>
-            //     <option value="Filtración">Filtración</option>
-            //     <option value="Cumplimiento">Cumplimiento</option>
-            // </select>
-            //             echo "</form>";
+                        echo "<form action='php/crud_dang.php' method='post' class='crud-form'>";
+                        echo    "<p>En esta sección puede editar el Riesgo que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";          
+                        echo    "<input type='text' name='id_action' value='2' hidden>";
+                        echo    "<input type='text' name='crud_dang_id' value='" . $dang_id . "' hidden>";
+                        echo    "<div class='form-row'>";
+                        echo    "<p>Riesgo para el atríbuto</p>";
+                        echo    "<select name='crud_dang' id='dangs' style='width:60%' required>";
+                        echo        "<option disabled selected value style='color:gray'> -- seleccione el riesgo para el atríbuto -- </option>";
+                        echo        "<option value='Filtración'>Filtración</option>";
+                        echo        "<option value='Cumplimiento'>Cumplimiento</option>";
+                        echo    "</select></div><br>";
+                        echo    "<div class='form-row'><p>Explicación del riesgo</p><textarea type='text' name='crud_dang_exp' placeholder='" . $dang_exp . "' required></textarea></div><br>";
+                        echo    "<button type='submit'>Actualizar</button>";
+                        echo "</form>";
                     }
                 }
             }

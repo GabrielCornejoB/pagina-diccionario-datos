@@ -5,10 +5,10 @@ if (isset($_POST['id_action'])) {
     if ($id_action == 1) {       
         require_once 'connection.php';
         $id_attr = $_POST['crud_obj_idAttr'];
-        $obj = $_POST['obj'];
-        $query = "INSERT INTO objetivos (objetivo,id_atributo) VALUES ('$obj','$id_attr');";
+        $crud_obj_idObj = $_POST['crud_obj_idObj'];
+        $query = "INSERT INTO objetivos_relac (id_objetivo,id_atributo) VALUES ('$crud_obj_idObj','$id_attr');";
         mysqli_query($conn, $query);
-        header("location: ../objetivos.php");
+        header("location: ../objetivos_procesos.php");
         exit();
     }
     elseif ($id_action == 2) {
@@ -17,7 +17,7 @@ if (isset($_POST['id_action'])) {
         $obj = $_POST['crud_obj_desc'];
         $query = "UPDATE objetivos SET objetivo='$obj' WHERE id_objetivo=$id_obj;";
         mysqli_query($conn, $query);
-        header("location: ../objetivos.php");
+        header("location: ../objetivos_procesos.php");
         exit();
     }
     elseif ($id_action == 3) {
@@ -26,7 +26,7 @@ if (isset($_POST['id_action'])) {
 
         $query = "DELETE FROM objetivos WHERE id_objetivo=$obj_id;";
         mysqli_query($conn, $query);
-        header("location: ../objetivos.php");
+        header("location: ../objetivos_procesos.php");
         exit();
     }
 }

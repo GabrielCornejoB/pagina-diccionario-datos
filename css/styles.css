@@ -283,6 +283,12 @@ select {
     justify-content: space-around;
 }
 
+.split-div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 15px;

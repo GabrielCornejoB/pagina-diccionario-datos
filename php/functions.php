@@ -16,6 +16,7 @@ function generate_nav($page_name) {
             "<a href='objetivos.php'>Objetivos</a>" .
             "<a href='procesos.php'>Procesos</a>" .
             "<a href='riesgos.php'>Riesgos</a>" .
+            "<a href='objetivos_procesos.php'>Objetivos y Procesos</a>" .
         "</nav>";
 }
 function generate_terms() {
@@ -287,6 +288,86 @@ function generate_processes() {
         echo "</div>";
     }
 }
+function generate_objs_procs() {
+    require "php/connection.php";
+    $query_terms = "SELECT * FROM terminos;";
+    $result_terms = mysqli_query($conn, $query_terms);
+    $result_terms_rows = mysqli_num_rows($result_terms);
+
+    if ($result_terms_rows > 0) {
+        echo "<div class='terms'>";
+        while ($term = mysqli_fetch_assoc($result_terms)) {
+            echo "<p><strong>Término:</strong>&emsp;" . $term['termino'] . "</p>";
+            $id_term = $term['id_termino'];
+
+            $query_attrs = "SELECT * FROM atributos WHERE id_termino=$id_term;";
+            $result_attrs = mysqli_query($conn, $query_attrs);
+            $result_attrs_rows = mysqli_num_rows($result_attrs);
+
+            if ($result_attrs_rows > 0) {
+                echo "<div class='attrs-srcs'>";
+                while ($attr = mysqli_fetch_assoc($result_attrs)) {
+                    echo "<hr><p><strong>Atríbuto:</strong>&emsp;" . $attr['atributo'] . "</p><hr>";
+                    $id_attr = $attr['id_atributo'];
+
+                    $query_objs = "SELECT id_objetivo_relac, objetivo
+                                    FROM objetivos_relac ro JOIN objetivos o ON ro.id_objetivo = o.id_objetivo
+                                    WHERE id_atributo=$id_attr;";
+                    $result_objs = mysqli_query($conn, $query_objs);
+                    $result_objs_rows = mysqli_num_rows($result_objs);
+
+                    $query_procs = "SELECT id_proceso_relac, proceso
+                                    FROM procesos_relac rp JOIN procesos p ON rp.id_proceso = p.id_proceso
+                                    WHERE id_atributo=$id_attr;";
+                    $result_procs = mysqli_query($conn, $query_procs);
+                    $result_procs_rows = mysqli_num_rows($result_procs);
+           
+                    echo "<div class='split-div'>";
+                    if ($result_objs_rows > 0) {
+                        echo "<ul style='margin:0 30px'>";
+                            while ($obj = mysqli_fetch_assoc($result_objs)) {
+                                echo "<div class='text-symbol'>";
+                                echo "<li><p style='font-size:15px' ><strong>Objetivo:</strong>&emsp;" . $obj['objetivo'] . "</p></li>";
+                                echo "<form action='editar.php' method='post' class='form-icon'>";
+                                echo    "<input type='text' name='id_type' value='4' hidden>";
+                                echo    "<input type='text' name='obj_id' value='" . $obj['id_objetivo_relac'] . "' hidden>";
+                                echo    "<input type='text' name='obj_desc' value='" . $obj['objetivo'] . "' hidden>";
+                                echo    "<button type='submit' class='icon-btn icon-obj'><span class='material-symbols-outlined' style='font-size: 17px;'>edit</span></button>";
+                                echo "</form>";
+                                echo "</div>";
+                            }
+                        echo "</ul>";
+                    }
+                    else {
+                        echo "<span>";    
+                    }
+                    if ($result_procs_rows > 0) {
+                        echo "<ul style='margin:0 30px;'>";
+                            while ($proc = mysqli_fetch_assoc($result_procs)) {
+                                echo "<div class='text-symbol'>";
+                                echo "<li><p style='font-size:15px'><strong>Proceso:</strong>&emsp;" . $proc['proceso'] . "</p></li>";
+                                echo "<form action='editar.php' method='post' class='form-icon'>";
+                                echo    "<input type='text' name='id_type' value='5' hidden>";
+                                echo    "<input type='text' name='proc_id' value='" . $proc['id_proceso_relac'] . "' hidden>";
+                                echo    "<input type='text' name='proc_desc' value='" . $proc['proceso'] . "' hidden>";
+                                echo    "<button type='submit' class='icon-btn icon-obj'><span class='material-symbols-outlined' style='font-size: 17px;'>edit</span></button>";
+                                echo "</form>";
+                                echo "</div>";
+                            }
+                        echo "</ul>";
+                    }
+                    else {
+                        echo "<span>";
+                    }
+                    echo "</div>";  
+                }
+                echo "</div>";
+            }
+            echo "<hr>";
+        }
+        echo "</div>";
+    }
+}
 function generate_dangers() {
     require "php/connection.php";
     $query_terms = "SELECT * FROM terminos;";
@@ -357,6 +438,30 @@ function generate_select_attrs() {
     if ($result_rows > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<option value='" . $row['id_atributo'] . "'>" . $row['atributo'] . "</option>";
+        }
+    }
+}
+function generate_select_objs() {
+    require "php/connection.php";
+    $query = "SELECT * FROM objetivos;";
+    mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
+    $result_rows = mysqli_num_rows($result);
+    if ($result_rows > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option value='" . $row['id_objetivo'] . "'>" . $row['objetivo'] . "</option>";
+        }
+    }
+}
+function generate_select_procs() {
+    require "php/connection.php";
+    $query = "SELECT * FROM procesos;";
+    mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
+    $result_rows = mysqli_num_rows($result);
+    if ($result_rows > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option value='" . $row['id_proceso'] . "'>" . $row['proceso'] . "</option>";
         }
     }
 }

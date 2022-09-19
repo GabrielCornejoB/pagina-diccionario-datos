@@ -5,11 +5,11 @@ if (isset($_POST['id_action'])) {
     if ($id_action == 1) {
         require_once 'connection.php';
         $id_attr = $_POST['crud_proc_idAttr'];
-        $proc = $_POST['proc']; 
+        $crud_proc_idProc = $_POST['crud_proc_idProc']; 
 
-        $query = "INSERT INTO procesos (proceso, id_atributo) VALUES ('$proc', '$id_attr');";
+        $query = "INSERT INTO procesos_relac (id_proceso, id_atributo) VALUES ('$crud_proc_idProc', '$id_attr');";
         mysqli_query($conn, $query);
-        header("location: ../procesos.php");
+        header("location: ../objetivos_procesos.php");
         exit();
     }
     elseif ($id_action == 2) {
@@ -19,7 +19,7 @@ if (isset($_POST['id_action'])) {
 
         $query = "UPDATE procesos SET proceso='$proc' WHERE id_proceso=$id_proc;";
         mysqli_query($conn, $query);
-        header("location: ../procesos.php");
+        header("location: ../objetivos_procesos.php");
         exit();
     }
     elseif ($id_action == 3) {
@@ -28,7 +28,7 @@ if (isset($_POST['id_action'])) {
 
         $query = "DELETE FROM procesos WHERE id_proceso=$id_proc;";
         mysqli_query($conn, $query);
-        header("location: ../procesos.php");
+        header("location: ../objetivos_procesos.php");
         exit();
     }
 }

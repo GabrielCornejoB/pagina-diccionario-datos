@@ -31,7 +31,7 @@
             <div class="form-row">
                 <p>Atríbuto del objetivo</p>
                 <select name="crud_obj_idAttr" id="terms" style='width:60%' required>
-                    <option disabled selected value style="color:gray"> -- seleccione el atríbuto al que pertenecerá el nuevo objetivo -- </option>             
+                    <option disabled selected value style="color:gray"> -- seleccione el atríbuto -- </option>             
                     <?php
                         generate_select_attrs();
                     ?>
@@ -58,7 +58,7 @@
             <div class="form-row">
                 <p>Atríbuto del proceso</p>
                 <select name="crud_proc_idAttr" id="terms" style='width:60%' required>
-                <option disabled selected value style="color:gray"> -- seleccione el atríbuto al que pertenecerá el nuevo objetivo -- </option>             
+                <option disabled selected value style="color:gray"> -- seleccione el atríbuto  -- </option>             
                 <?php
                     generate_select_attrs();
                 ?>

@@ -13,18 +13,18 @@ if (isset($_POST['id_action'])) {
     }
     elseif ($id_action == 2) {
         require_once 'connection.php';
-        $id_obj = $_POST['crud_obj_id'];
+        $id_obj_relac = $_POST['crud_obj_id'];
         $obj = $_POST['crud_obj_desc'];
-        $query = "UPDATE objetivos SET objetivo='$obj' WHERE id_objetivo=$id_obj;";
+        $query = "UPDATE objetivos_relac SET id_objetivo='$obj' WHERE id_objetivo_relac=$id_obj_relac;";
         mysqli_query($conn, $query);
         header("location: ../objetivos_procesos.php");
         exit();
     }
     elseif ($id_action == 3) {
         require_once 'connection.php';
-        $obj_id = $_POST['crud_obj_id'];
+        $obj_id_relac = $_POST['crud_obj_id'];
 
-        $query = "DELETE FROM objetivos WHERE id_objetivo=$obj_id;";
+        $query = "DELETE FROM objetivos_relac WHERE id_objetivo_relac=$obj_id_relac;";
         mysqli_query($conn, $query);
         header("location: ../objetivos_procesos.php");
         exit();

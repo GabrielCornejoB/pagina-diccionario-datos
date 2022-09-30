@@ -138,7 +138,12 @@
                         echo    "<p>En esta sección puede editar el Objetivo estratégico que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";          
                         echo    "<input type='text' name='id_action' value='2' hidden>";
                         echo    "<input type='text' name='crud_obj_id' value='" . $obj_id . "' hidden>";
-                        echo    "<input type='text' name='crud_obj_desc' placeholder='" . $obj_desc . "' title='Escriba aquí el nuevo valor del objetivo' required><br><br>";
+
+                        echo "<select name='crud_obj_desc' id='terms' style='width:60%' required>";
+                        echo "<option disabled selected value style='color:gray'> -- seleccione el objetivo -- </option>";
+                        generate_select_objs();
+                        echo "</select><br><br><br>";
+                        // echo    "<input type='text' name='crud_obj_desc' placeholder='" . $obj_desc . "' title='Escriba aquí el nuevo valor del objetivo' required><br><br>";
                         echo    "<button type='submit'>Actualizar</button>";
                         echo "</form>";
 
@@ -158,7 +163,11 @@
                         echo    "<p>En esta sección puede editar el Proceso que escogió previamente, cambie los valores en los campos de texto y cuando termine, presione <strong>\"Actualizar\"</strong>.</p><hr>";          
                         echo    "<input type='text' name='id_action' value='2' hidden>";
                         echo    "<input type='text' name='crud_proc_id' value='" . $proc_id . "' hidden>";
-                        echo    "<input type='text' name='crud_proc_desc' placeholder='" . $proc_desc . "' title='Escriba aquí el nuevo valor del objetivo' required><br><br>";
+                        // echo    "<input type='text' name='crud_proc_desc' placeholder='" . $proc_desc . "' title='Escriba aquí el nuevo valor del objetivo' required><br><br>";
+                        echo "<select name='crud_proc_desc' id='terms' style='width:60%' required>";
+                        echo "<option disabled selected value style='color:gray'> -- seleccione el proceso -- </option>";
+                        generate_select_procs();
+                        echo "</select><br><br><br>";
                         echo    "<button type='submit'>Actualizar</button>";
                         echo "</form>";
 
@@ -170,7 +179,7 @@
                         echo "</form>";
                     }
                 }
-                elseif ($id_type == 6) {
+                elseif ($id_type == 6) {        // Dang
                     if (isset($_POST['dang_id']) && isset($_POST['dang_exp'])) {
                         $dang_id = $_POST['dang_id'];
                         $dang_exp = $_POST['dang_exp'];

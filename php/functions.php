@@ -13,10 +13,8 @@ function generate_nav($page_name) {
             "<a href='terminos.php'>Términos de negocio</a>" .
             "<a href='atributos.php'>Atríbutos de Datos</a>" . 
             "<a href='fuentes.php'>Fuentes de Datos</a>" .
-            "<a href='objetivos.php'>Objetivos</a>" .
-            "<a href='procesos.php'>Procesos</a>" .
-            "<a href='riesgos.php'>Riesgos</a>" .
             "<a href='objetivos_procesos.php'>Objetivos y Procesos</a>" .
+            "<a href='riesgos.php'>Riesgos</a>" .
         "</nav>";
 }
 function generate_terms() {

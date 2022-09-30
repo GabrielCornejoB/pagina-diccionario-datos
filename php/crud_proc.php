@@ -17,7 +17,7 @@ if (isset($_POST['id_action'])) {
         $id_proc = $_POST['crud_proc_id'];
         $proc = $_POST['crud_proc_desc'];
 
-        $query = "UPDATE procesos SET proceso='$proc' WHERE id_proceso=$id_proc;";
+        $query = "UPDATE procesos_relac SET id_proceso='$proc' WHERE id_proceso_relac=$id_proc;";
         mysqli_query($conn, $query);
         header("location: ../objetivos_procesos.php");
         exit();
@@ -26,7 +26,7 @@ if (isset($_POST['id_action'])) {
         require_once 'connection.php';
         $id_proc = $_POST['crud_proc_id'];
 
-        $query = "DELETE FROM procesos WHERE id_proceso=$id_proc;";
+        $query = "DELETE FROM procesos_relac WHERE id_proceso_relac=$id_proc;";
         mysqli_query($conn, $query);
         header("location: ../objetivos_procesos.php");
         exit();
